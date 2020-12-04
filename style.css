@@ -1,0 +1,516 @@
+html{
+    background-image:url("pictures/spaceBackground.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+/* Input Form */
+
+.search{
+    display:flex;
+    justify-content:center;
+    margin-top:1.5rem;
+    width:100%
+}
+
+.search #weatherLocationInput {
+    width: 30%;
+    padding: 12px 24px;
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    background-color: transparent;
+
+
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+}
+.search #weatherLocationInput:hover,
+    #weatherLocationInput:focus {
+        padding: 12px 0;
+        outline: 0;
+        border: 1px solid transparent;
+        border-bottom: 1px solid #575756;
+        border-radius: 0;
+        background-position: 100% center;
+    
+}
+
+.search #weatherLocationInput::placeholder{
+        color: rgb(255, 255, 255);
+        /* text-transform: uppercase; */
+}
+.search #weatherSubmitButton {
+    width: 40px;
+    height: 50px;
+    /* border: 1px solid #00B4CC; */
+    border:none;
+    background: none;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#errorMSG
+{
+    /* display:flex;
+    justify-content:center; */
+    color:rgb(230, 41, 41);
+    font-size:20px;
+    font-family: 'Heebo, sans-serif';
+    font-weight:800px;
+    text-align:center;
+
+
+}
+/* Celsius to Farenheit switch */
+
+.toggle-button-cover
+{
+    display: flex;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+.button-cover
+{
+    height: 100px;
+}
+
+.button-cover:before
+{
+    counter-increment: button-counter;
+    content: counter(button-counter);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #d7e3e3;
+    font-size: 12px;
+    line-height: 1;
+    padding: 5px;
+}
+
+.button-cover, .knobs, .layer
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button
+{
+    position: relative;
+    top: 50%;
+    width: 74px;
+    height: 36px;
+    margin: -20px auto 0 auto;
+    overflow: hidden;
+}
+
+.button.r, .button.r .layer
+{
+    border-radius: 100px;
+}
+
+.button.b2
+{
+    border-radius: 2px;
+}
+
+.checkbox
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs
+{
+    z-index: 2;
+}
+
+.layer
+{
+    width: 100%;
+    background-color: #16191a;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+#button-9 .knobs:before, #button-9 .knobs:after, #button-9 .knobs span
+{
+    position: absolute;
+    top: 4px;
+    width: 20px;
+    height: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 9px 4px;
+    border-radius: 50%;
+    transition: 0.4s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+#button-9 .knobs:before
+{
+    content: '\2103';
+    left: 4px;
+}
+
+#button-9 .knobs:after
+{
+    content: '\2109';
+    right: -24px;
+}
+
+#button-9 .knobs:before, #button-9 .knobs:after
+{
+    color: #fff;
+    z-index: 2;
+}
+
+#button-9 .knobs span
+{
+    left: 4px;
+    background-color: #1f41af;
+    z-index: 1;
+}
+
+#button-9 .checkbox:checked + .knobs:before
+{
+    left: -24px;
+}
+
+#button-9 .checkbox:checked + .knobs:after
+{
+    right: 4px;
+}
+
+#button-9 .checkbox:checked + .knobs span
+{
+    left: 42px;
+    background-color: #540a5e;
+}
+
+#button-9 .checkbox:checked ~ .layer
+{
+  background-color: #16191a;
+}
+
+/* Weather Container */
+
+#basicWeatherContainer{
+    color:white;
+    padding-top:3rem;
+    display:grid;
+    grid-template-columns: 450px 0.5fr 0.125fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    column-gap: 10px;
+    justify-content:space-evenly;
+    padding-left:15vw;
+    padding-top:200px;
+    padding-right:15vw;
+    font-family: 'Heebo', sans-serif;
+}
+
+#basicWeatherContainer #condition{
+    grid-column:1/2;
+    grid-row:1/1;
+    font-size:20px;
+
+}
+#basicWeatherContainer #cityName{
+    grid-column:1/2;
+    grid-row:2/2;
+    font-size:20px;
+}
+#basicWeatherContainer #currentTemperature{
+    grid-column:1/1;
+    grid-row:3/5;
+    font-size:100px;
+    font-family: 'Montserrat', sans-serif;
+}
+#basicWeatherContainer #currentFeelsLike{
+    grid-column:2/2;
+    grid-row:3/3;
+    height:25px;
+    margin-top:1.5rem;
+    /* margin-bottom:-1rem; */
+}
+#basicWeatherContainer #currentWind{
+    grid-column:2/2;
+    grid-row:4/4;
+    height:25px;
+    /* margin-top:-2.5rem; */
+
+}
+#basicWeatherContainer #currentHumidity{
+    grid-column:2/2;
+    grid-row:5/5;
+    height:25px;
+
+    /* margin-top:-2.7rem; */
+}
+#basicWeatherContainer #arrowElement{
+    grid-column:3/3;
+    grid-row:3/3;
+    font-size:25px;
+    cursor:pointer;
+}
+#basicWeatherContainer [data-hidden-container]{
+    display:none;
+}
+#basicWeatherContainer #sunrise{
+    grid-column:4/4;
+    grid-row:2/2;
+}
+#basicWeatherContainer #sunset{
+    grid-column:5/5;
+    grid-row:2/2;
+}
+#basicWeatherContainer #maxTemp{
+    grid-column:4/4;
+    grid-row:3/3;
+    margin-top:1.5rem;
+}
+#basicWeatherContainer #minTemp{
+    grid-column:5/5;
+    grid-row:3/3;
+    margin-top:1.5rem;
+
+}
+#basicWeatherContainer #chanceOfRain{
+    grid-column:4/4;
+    grid-row:4/4;
+}
+#basicWeatherContainer #chanceOfSnow{
+    grid-column:5/5;
+    grid-row:4/4;
+}
+
+
+#basicWeatherContainer .rightArrowAnimation
+{
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+#basicWeatherContainer .rightArrowAnimation:hover,
+#basicWeatherContainer .rightArrowAnimation:focus,
+#basicWeatherContainer .rightArrowAnimation:active {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+
+#basicWeatherContainer .leftArrowAnimation
+{
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+
+#basicWeatherContainer .leftArrowAnimation:hover,
+#basicWeatherContainer .leftArrowAnimation:focus,
+#basicWeatherContainer .leftArrowAnimation:active {
+    -webkit-transform: translateX(-8px);
+    transform: translateX(-8px);
+  }
+
+#basicWeatherContainer #downArrowElement{
+    grid-column:3/3;
+    grid-row:5/5;
+    font-size:25px;
+    cursor:pointer;
+}
+#basicWeatherContainer .downArrowAnimation{
+
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+#basicWeatherContainer .downArrowAnimation:hover,
+#basicWeatherContainer .downArrowAnimation:focus,
+#basicWeatherContainer .downArrowAnimation:active {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+}
+
+#basicWeatherContainer .upArrowAnimation{
+display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#basicWeatherContainer .upArrowAnimation:hover,
+#basicWeatherContainer .upArrowAnimation:focus,
+#basicWeatherContainer .upArrowAnimation:active{
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+
+
+
+
+
+/*
+==============================================
+Animations
+==============================================
+*/
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-12-4 10:53:50
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+.fadeIn{
+	-webkit-animation: fadeIn 1.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: fadeIn 1.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+
+ @-webkit-keyframes fadeIn {
+    0% {
+      -webkit-transform: rotateX(70deg);
+              transform: rotateX(70deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      -webkit-transform: rotateX(70deg);
+              transform: rotateX(70deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+  }
+
+.fade-in-left {
+	-webkit-animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes fade-in-left {
+    0% {
+      -webkit-transform: translateX(-50px);
+              transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-left {
+    0% {
+      -webkit-transform: translateX(-50px);
+              transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+.fade-out-left {
+	-webkit-animation: fade-out-left 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: fade-out-left 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @-webkit-keyframes fade-out-left {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(-50px);
+              transform: translateX(-50px);
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out-left {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(-50px);
+              transform: translateX(-50px);
+      opacity: 0;
+    }
+  }
+  
+  
+  

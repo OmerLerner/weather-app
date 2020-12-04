@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type='text/css' href="style.css">
+  <script
+  src="https://kit.fontawesome.com/a538d6fa29.js"
+  crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
+
+</head>
+
+<body>
+  <div class="search">
+    <input type="text" id="weatherLocationInput" placeholder="Enter a city name" onkeypress="handleKeyPress(event)">
+    <button id='weatherSubmitButton' accesskey="Enter"><i class="fas fa-search"></i>
+    </button>
+  </div>
+
+
+  <div class="toggle-button-cover">
+    <div class="button-cover">
+      <div class="button r" id="button-9">
+        <input type="checkbox" class="checkbox">
+        <div class="knobs">
+          <span></span>
+        </div>
+        <div class="layer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="errorMSG"></div>
+  
+  
+
+  <div id="basicWeatherContainer">
+    <div id="condition"></div>
+    <div id="cityName"></div>
+    <div id="currentTemperature"></div>
+    <div id="currentFeelsLike"></div>
+    <div id="currentWind"></div>
+    <div id="currentHumidity"></div>
+    <div id="arrowElement" class="rightArrowAnimation" hidden><span>&#11208;</span></div>
+    <!-- <div id="downArrowElement" class="downArrowAnimation" hidden><span>&#11206;</span></div> -->
+    <div id="sunrise" data-hidden-container ></div>
+    <div id="sunset" data-hidden-container></div>
+    <div id="maxTemp" data-hidden-container></div>
+    <div id="minTemp" data-hidden-container></div>
+    <div id="chanceOfRain" data-hidden-container></div>
+    <div id="chanceOfSnow" data-hidden-container></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
