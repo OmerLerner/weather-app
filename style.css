@@ -93,8 +93,8 @@ html{
 
 .button-cover:before
 {
-    counter-increment: button-counter;
-    content: counter(button-counter);
+    /* counter-increment: button-counter;
+    content: counter(button-counter); */
     position: absolute;
     right: 0;
     bottom: 0;
@@ -249,9 +249,9 @@ html{
 #basicWeatherContainer #currentTemperature{
     grid-column:1/1;
     grid-row:3/5;
-    font-size:120px;
+    font-size:100px;
     font-family: 'Montserrat', sans-serif;
-    margin-top:-30px;
+    margin-top:-20px;
 }
 #basicWeatherContainer #currentFeelsLike{
     grid-column:2/2;
