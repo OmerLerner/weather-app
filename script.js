@@ -114,9 +114,9 @@ async function getWeatherData(location) {
   removeAnimations();
   const response = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=1986480656ec490d950204923202611&q=${location}`,
-    // {
-    //   mode: 'cors',
-    // },
+     {
+       mode: 'cors',
+     },
   );
   if (response.status === 400) {
     errorMSG.textContent = 'Could not find the location. Please try again.';
