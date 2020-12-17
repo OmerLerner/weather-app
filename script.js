@@ -1,7 +1,4 @@
-if (!sessionStorage.getItem('celsiusChosen')) {
-  sessionStorage.setItem('celsiusChosen', true);
-}
-let celsiusChosen = sessionStorage.getItem('celsiusChosen');
+let celsiusChosen = 'true';
 
 let errorMSG = document.getElementById('errorMSG');
 
@@ -178,7 +175,6 @@ degreeSwitchButton.addEventListener('click', () => {
   } else {
     celsiusChosen = 'true';
   }
-  sessionStorage.setItem('celsiusChosen', celsiusChosen);
   if (parsedWeatherData === undefined) return;
   if (celsiusChosen === 'true') {
     displayMetric(parsedWeatherData);
