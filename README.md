@@ -2,6 +2,8 @@
 
 A vanilla JS web app which shows the weather for the inputted city.
 
+__Github Pages:__ https://omerlerner.github.io/weather-app/
+
 ## Features
 
 * __API Implementation__ - Implements openweathermap's API in order to dynamically alter the webpage & show the most precise forecast.
